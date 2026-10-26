@@ -1,0 +1,135 @@
+/* Reset e Configurações Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  padding: 60px 20px;
+  background: #0d0e15; /* Fundo escuro cibernético */
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cabecalho h1 {
+  font-size: 38px;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+.cabecalho h1 span {
+  color: #ff007f; /* Cor de destaque neon */
+  text-shadow: 0 0 10px rgba(255, 0, 127, 0.5);
+}
+
+.cabecalho p {
+  color: #8a8f98;
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+/* Container dos Cartões */
+.grade-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px; /* Mantém o espaçamento de 40px solicitado */
+  margin-top: 50px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Estrutura do Novo Cartão */
+.bloco-link {
+  width: 280px; /* Mantém a largura de 280px solicitada */
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Altura fixa para as duas camadas */
+.camada-topo,
+.camada-base {
+  height: 160px;
+  width: 100%;
+  transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1); /* Animação suave de 1s */
+}
+
+/* Camada da Frente (Símbolo) */
+.camada-topo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+  backdrop-filter: blur(4px);
+  position: relative;
+  z-index: 2;
+  transform: translateY(0);
+}
+
+/* Símbolos dos Ícones */
+.simbolo {
+  font-size: 34px; /* Mantém o tamanho de 34px solicitado */
+  font-weight: 800;
+  color: #ffffff;
+  background: var(--cor-foco);
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Transforma o fundo do ícone em círculo */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Camada de Trás (Texto) */
+.camada-base {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  background: #161722;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transform: translateY(100%); /* Esconde o texto descendo ele */
+}
+
+.camada-base h2 {
+  font-size: 20px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.camada-base p {
+  font-size: 13.5px;
+  color: #a0a5b5;
+  line-height: 1.6;
+}
+
+/* Efeito Hover e Foco Invertido (O topo sobe e a base entra) */
+.bloco-link:hover .camada-topo,
+.bloco-link:focus .camada-topo {
+  transform: translateY(-100%);
+}
+
+.bloco-link:hover .camada-base,
+.bloco-link:focus .camada-base {
+  transform: translateY(0);
+}
+
+/* Acessibilidade com borda brilhante customizada por rede */
+.bloco-link:focus-visible {
+  outline: none;
+  border-color: var(--cor-foco);
+  box-shadow: 0 0 15px var(--cor-foco);
+}
